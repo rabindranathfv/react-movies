@@ -9,17 +9,35 @@ class App extends Component {
     results: []
   }
 
+  handleResults = (results) => {
+    console.log('RESULTS IN APP', results);
+    this.setState({ results });
+  }
+
+  showResutls() {
+    const { results } = this.state;
+    return results.map( movie => {
+      return (
+        <div key={movie.imdbID}> 
+          <p>{movie.Title}</p>
+          <p> {movie.Year }</p>
+        </div>
+        
+      )
+    });
+  }
+
  render () {
    return (
     <div className="App">
       <Title>Search Movies </Title>
       <div className="searchForm-wrapper">
-        <SearchForm />
+        <SearchForm onResults={this.handleResults} />
       </div>
       {
         this.state.results.length === 0
           ? <p> sin Resultados</p> 
-          : <p> con Resultados</p> 
+          : this.showResutls()
       }
     </div>
    );
