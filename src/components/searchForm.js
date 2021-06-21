@@ -27,7 +27,7 @@ export class SearchForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <div className="field has-addons">
+                <div className="field has-addons mb-5">
                     <div className="control">
                         <input className="input" type="text" 
                         placeholder="Movie search"
