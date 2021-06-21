@@ -7,12 +7,19 @@ import { MovieList } from './components/MovieList'
 
 class App extends Component {
   state = {
-    results: []
+    results: [],
+    useSearch: false
   }
 
   handleResults = (results) => {
     console.log('RESULTS IN APP', results);
-    this.setState({ results });
+    this.setState({ results, useSearch: true });
+  }
+
+  renderResults = () => {
+    return this.state.results.length === 0
+        ? <p>sorry! No Results </p> 
+        : <MovieList movies={this.state.results} />
   }
 
 
@@ -24,9 +31,9 @@ class App extends Component {
         <SearchForm onResults={this.handleResults} />
       </div>
       {
-        this.state.results.length === 0
-          ? <p> sin Resultados</p> 
-          : <MovieList movies={this.state.results} />
+        this.state.useSearch
+          ? this.renderResults() 
+          : <small>Use the form to search a movie </small>
       }
     </div>
    );
