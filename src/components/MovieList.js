@@ -1,22 +1,35 @@
 import React, {Component} from 'react'
 import { Movie } from './Movie'
+import PropTypes from 'prop-types'
 
 export class MovieList extends Component {
+    static propTypes = {
+        movies: PropTypes.any
+    }
 
-    showResutls(movies) {
+    showResults(movies) {
         return movies.map( movie => {
             return (
-            <div>
-                 <Movie key={movie.imdbID} Title={movie.Title} Year={movie.Year} Poster={movie.Poster} /> 
-            </div>
-            
+                <div className="MoviesList-item">
+                    <Movie 
+                        Title={movie.Title} 
+                        Year={movie.Year} 
+                        Poster={movie.Poster}
+                        className="MoviesList-item"
+                    /> 
+                </div>
             )
-        });
+        })
     }
 
     render() {
+        const { movies } = this.props
         return (
-          this.showResutls(this.props.movies)
+            <div className="MoviesList">
+                {
+                    this.showResults(movies)
+                }
+            </div>
         )
     }
 }
