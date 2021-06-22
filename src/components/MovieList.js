@@ -10,8 +10,9 @@ export class MovieList extends Component {
     showResults(movies) {
         return movies.map( movie => {
             return (
-                <div className="MoviesList-item">
+                <div key={movie.imdbID} className="MoviesList-item">
                     <Movie 
+                        imdbID={movie.imdbID}
                         Title={movie.Title} 
                         Year={movie.Year} 
                         Poster={movie.Poster}
