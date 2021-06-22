@@ -1,19 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route } from 'react-router-dom';
+import { ButtonBackHome } from '../components/ButtonBackHome';
 
 const API_KEY = 'd74c6725';
-
-const ButtonBack = () => (
-    <Route render={({ history}) => (
-      <button
-        type='button'
-        onClick={() => { history.push('/') }}
-      >
-        Go Back
-      </button>
-    )} />
-  )
 
 export class Details extends Component {
     static propTypes = {
@@ -54,7 +43,7 @@ export class Details extends Component {
                 <h3>{Actors}</h3>
                 <p>Score: { Metascore }</p>
                 <p>{Plot}</p>
-                <ButtonBack />
+                <ButtonBackHome />
             </div>
         )
     }
